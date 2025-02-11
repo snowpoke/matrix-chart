@@ -65,16 +65,16 @@ spec:
                   key: {{ .Values.postgresql.global.postgresql.auth.secretKeys.databaseUsername }}
             - name: DATABASE_HOSTNAME
               value: {{ template "postgresql.v1.primary.fullname" .Subcharts.postgresql }}
-          #   {{- if .Values.postgresql.sslmode }}
-          #   - name: PGSSLMODE
-          #     value: {{ .Values.postgresql.sslmode }}
-          #   - name: PGSSLCERT
-          #     value: {{ .Values.postgresql.sslcert }}
-          #   - name: PGSSLKEY
-          #     value: {{ .Values.postgresql.sslkey }}
-          #   - name: PGSSLROOTCERT
-          #     value: {{ .Values.postgresql.sslrootcert }}
-          #   {{- end }}
+            {{- if .Values.postgresql.sslmode }}
+            - name: PGSSLMODE
+              value: {{ .Values.postgresql.sslmode }}
+            - name: PGSSLCERT
+              value: {{ .Values.postgresql.sslcert }}
+            - name: PGSSLKEY
+              value: {{ .Values.postgresql.sslkey }}
+            - name: PGSSLROOTCERT
+              value: {{ .Values.postgresql.sslrootcert }}
+            {{- end }}
           command:
             - "sh"
             - "-c"
